@@ -1,3 +1,8 @@
+# for later
+models 
+db/seed.js
+
+
 # Logs
 logs
 *.log
