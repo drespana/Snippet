@@ -1,4 +1,4 @@
-const snippets = [
+let snippets: { id: number; language: string; code: string}[] = [
     {
       "id": 1,
       "language": "Python",
@@ -41,4 +41,4 @@ const snippets = [
     }
   ]
 
-  module.exports = {snippets}
+  export default snippets;
