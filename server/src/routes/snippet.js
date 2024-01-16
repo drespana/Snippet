@@ -1,24 +1,20 @@
-const express = require('express')
-const {snippets} = require("../src/db/sample")
+const router = require('express').Router();
+const { Snippet } = require('../models/Snippet')
+const {encrpyt, decrypt} = require('../utils/encrypt')
+const { requiresAuth } = require('express-openid-connect')
 
-const snippetRouter = express.Router();
-snippetRouter.use(express.json());
-
-//GET all snippets
-snippetRouter.get("/", (req, res) => {
-    try{
-        const all =  snippets;
-        res.status(200).send(all)
+// get all
+router.get('/', requiresAuth(), async (req, res, next)  => {
+    try {
+        const allSnippets = await Snippet.findAll();
+        res.json(allSnippets);
     } catch (err) {
-        res.status(500).send(err.message)
+        next(err)
     }
 })
 
-// GET snippet by ID
+// get by ID
 
-// GET snippet by LANGUAGE
+// get by language
 
-// POST snippet
-
-
-module.exports = snippetRouter;
+module.exports = router;
