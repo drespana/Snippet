@@ -41,4 +41,6 @@ const snippets = [
     }
   ]
 
-  module.exports = {snippets}
+  module.exports = {
+    snippets
+}
