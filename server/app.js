@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const snippetRouter = require('../server/src/routes/snippet');
 // const { auth } = require('express-openid-connect');
