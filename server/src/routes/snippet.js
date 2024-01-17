@@ -1,7 +1,5 @@
 const express = require('express')
-const { Snippet } = require('../models/Snippet')
 const {encrypt, decrypt} = require('../utils/encrypt')
-// const { requiresAuth } = require('express-openid-connect')
 
 const router = express.Router();
 
