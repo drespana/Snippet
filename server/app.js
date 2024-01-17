@@ -1,10 +1,10 @@
 require('dotenv').config();
 const express = require('express')
-const snippetRouter = require('../server/src/routes/snippet');
 const { auth } = require('express-openid-connect');
 const {db} = require('./src/db/config')
 const PORT = process.env.PORT || 3000;
 const app = express()
+// const snippetRouter = require('../server/src/routes/snippet');
 
 ///////////// Really don't want this here ////////////////////////////
 const {Snippet} = require('./src/models/Snippet')
@@ -27,8 +27,8 @@ app.get("/", (req, res) => {
 
 app.use(express.json())
 
-// app.use('/user', routes.user)
-app.use('/snippet', snippetRouter)
+// app.use('/snippet', routes.snippet)
+// app.use('/snippet', snippetRouter)
 
 
 async function init() {

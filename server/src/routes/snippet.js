@@ -2,10 +2,10 @@ const express = require('express')
 const { Snippet } = require('../models/Snippet')
 // const { requiresAuth } = require('express-openid-connect')
 
-const snippetRouter = express.Router();
+const router = express.Router();
 
 // get all
-snippetRouter.get('/', async (req, res, next)  => {
+router.get('/', async (req, res, next)  => {
     try {
         const allSnippets = await Snippet.findAll();
         res.json(allSnippets);
@@ -18,4 +18,4 @@ snippetRouter.get('/', async (req, res, next)  => {
 
 // get by language
 
-module.exports = snippetRouter;
+module.exports = router;
