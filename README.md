@@ -4,7 +4,7 @@
 A database attempt.
 
 ## snippr
-The actual assignment.
+The actual assignment that will be pushed to main.
 
 ## ts
 A typescript backend.
