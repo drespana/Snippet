@@ -4,14 +4,14 @@ const PORT = process.env.PORT || 3000;
 const app = express()
 
 
-// const routes = require('./src/routes')
-const router = require('../server/src/routes/snippet');
+const routes = require('./src/routes')
+// const router = require('../server/src/routes/snippet');
 
 app.use(express.json())
 
 // app.use('/snippet', routes.snippets)
 // app.use('./user', routes.user)
-app.use('/snippet', router)
+app.use('/snippet', routes.snippets)
 
 async function init() {
     app.listen(PORT, () => {
