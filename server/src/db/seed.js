@@ -1,4 +1,4 @@
-const {snippets} = require('./sample')
+const snippets = require('./sample')
 const { Snippet } = require('../models/Snippet')
 const { db } = require('./config')
 
@@ -8,3 +8,4 @@ const syncSeed = async ()=> {
 }
 
 syncSeed();
+

@@ -8,6 +8,7 @@ const router = express.Router();
 router.get('/', async (req, res, next)  => {
     try {
         const allSnippets = await Snippet.findAll();
+        console.log(allSnippets)
         res.json(allSnippets);
     } catch (err) {
         next(err)
