@@ -1,4 +1,4 @@
-import snippets from "./dataset";
+import snippets from "./sample";
 
 const Resolvers = {
     Query: {

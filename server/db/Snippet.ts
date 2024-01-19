@@ -1,3 +1,5 @@
+// schema
+
 import { gql } from "apollo-server-express";
 const Snippet = gql`
   type Snippet {
