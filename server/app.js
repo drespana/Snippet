@@ -13,7 +13,7 @@ const {snippets} = require('./src/db/sample')
 
 app.use(express.json())
 
-app.use('/snippet', routes.snippet)
+app.use('/snippet', routes.snippets)
 // app.use('./user', routes.user)
 // app.use('/snippet', snippetRouter)
 

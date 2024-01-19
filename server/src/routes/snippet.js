@@ -1,9 +1,10 @@
-const express = require('express')
+// const express = require('express')
+const router = require("express").Router();
 const { Snippet } = require('../models/Snippet')
 const {encrypt, decrypt} = require('../utils/encrypt')
 // const { requiresAuth } = require('express-openid-connect')
 
-const router = express.Router();
+// const router = express.Router();
 
 // get all snippets
 router.get('/', async (req, res, next)  => {
