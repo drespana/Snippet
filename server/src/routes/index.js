@@ -1,5 +1,5 @@
 const routes = {
-    snippets: require('./snippet')
-}
+    snippet: require('./snippet')
+};
 
-module.exports = routes
+module.exports = routes;
