@@ -8,7 +8,7 @@ const authorize = require('../middleware/authorize');
 
 userRouter.post('/', basicAuth, async (req, res, next) => {
     // get user data returned by middleware
-    const { email, password } = req.body
+    const { email, password } = req.user
     
     // TODO: handle no email & password
 
