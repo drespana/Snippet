@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 async function init() {
     db.sync()
      .then(await syncSeed())
-     
+
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`)
       })  
