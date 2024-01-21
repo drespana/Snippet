@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 // const { auth } = require('express-openid-connect');
 const {db} = require('./src/db/config');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 const routes = require('./src/routes/index');
@@ -18,8 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use('/snippets', routes.snippets);
-// app.use('./user', routes.user)
-// app.use('/snippet', snippetRouter)
+app.use('/users', routes.users);
 
 async function init() {
     db.sync()

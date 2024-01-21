@@ -1,12 +1,10 @@
-// const express = require('express');
-// const snippetRouter = require("express").Router();
 const express = require('express');
 const snippetRouter = express.Router();
 const { Snippet } = require('../models/Snippet');
-// const {encrypt, decrypt} = require('../utils/encrypt');
-// const { requiresAuth } = require('express-openid-connect')
+const authorize = require('../middleware/authorize');
+// const { encrypt, decrypt} = require('../utils/encrypt');
 
-// const router = express.Router();
+const encryptedSnippets = require('../db/test');
 
 // get all snippets
 snippetRouter.get('/', async (req, res, next)  => {
@@ -17,6 +15,39 @@ snippetRouter.get('/', async (req, res, next)  => {
         next(err)
     }
 })
+
+/////////////////////////////////////////////////////
+////////////// testing encrypt file ////////////////
+///////////////////////////////////////////////////
+
+// let id = encryptedSnippets.length;
+// snippetRouter.get('/test', (req, res, next) => {
+//     try{
+//         const decryptedSnippets = decrypt(encryptedSnippets)
+//         res.json(decryptedSnippets)
+//     } catch (error) {
+//         next(error)
+//     }
+// })
+// snippetRouter.post('/test', (req, res, next) => {
+//     const { language, code } = req.body
+//     try {
+//         const snippet = {
+//             id: id++,
+//             language,
+//             code
+//         }
+//         encryptedSnippets.push({...encryptedSnippets, code: encrypt(code)});
+//         res.status(201).json(snippet);
+//     } catch (error) {
+//         next(error)
+//     }
+// })
+
+
+///////////////////////////////////////////////////////
+///////////////// with encrypt file //////////////////
+//////////////////////////////////////////////////////
 
 // get by ID
 
@@ -40,8 +71,7 @@ snippetRouter.get('/', async (req, res, next)  => {
 //         code
 //     }
 
-//     // encrypt this:
-//     await Snippet.create(snippet);
+//     await Snippet.create({snippet, code: encrypt(code)});
 // })
 
 module.exports = snippetRouter;

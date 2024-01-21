@@ -45,4 +45,7 @@ function decrypt(input) {
   return decryptedText
 }
 
-module.exports = { encrypt, decrypt }
+module.exports = { 
+  encrypt, 
+  decrypt 
+}

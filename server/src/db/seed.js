@@ -8,8 +8,6 @@ const { db } = require('./config')
     console.log("db populated.")
 }
 
-//  syncSeed();
-
 module.exports = {
     syncSeed
 }
