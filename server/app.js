@@ -1,9 +1,9 @@
-const {syncSeed }= require('./src/db/seed')
+const { syncSeed }= require('./src/db/seed')
 require('dotenv').config();
 const express = require('express')
 // const { auth } = require('express-openid-connect');
 const {db} = require('./src/db/config')
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const app = express()
 
 // const routes = require('./src/routes')
@@ -23,10 +23,12 @@ app.get("/", (req, res) => {
 
 async function init() {
     db.sync()
-    // await syncSeed()
+     .then(await syncSeed())
+     
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`)
       })  
+     
 }
 
 init();
