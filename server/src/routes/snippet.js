@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const authorize = require('../middleware/authorize');
 // const router = require("express").Router();
 // const { encrypt, decrypt } = require("../utils/encrypt");
 
@@ -9,7 +10,7 @@ const snippets = require("./seedData.json");
 //generate unique id for each snippet
 // let id = snippets.length;
 
-router.get('/', (req, res, next) => {
+router.get('/', authorize, (req, res, next) => {
   try {
     const allSnippets = snippets.map((snippet) => ({
       ...snippet
