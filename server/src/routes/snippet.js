@@ -1,12 +1,13 @@
-// const express = require('express');
-const router = require("express").Router();
+const express = require('express');
+const router = express.Router();
+// const router = require("express").Router();
 // const { encrypt, decrypt } = require("../utils/encrypt");
 
 // array to store snippets
 const snippets = require("./seedData.json");
 
 //generate unique id for each snippet
-let id = snippets.length;
+// let id = snippets.length;
 
 router.get('/', (req, res, next) => {
   try {
