@@ -6,7 +6,7 @@ const {db} = require('./src/db/config')
 const PORT = process.env.PORT || 5000;
 const app = express()
 
-// const routes = require('./src/routes')
+const routes = require('./src/routes')
 
 // const snippetRouter = require('../server/src/routes/snippet');
 
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.send("Snipper Snippets API");
 });
 
-// app.use('/snippet', routes.snippets)
+app.use('/snippet', routes.snippets)
 // app.use('./user', routes.user)
 // app.use('/snippet', snippetRouter)
 
