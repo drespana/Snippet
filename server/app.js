@@ -2,7 +2,7 @@ const { syncSeed }= require('./src/db/seed');
 require('dotenv').config();
 const express = require('express');
 const {db} = require('./src/db/config');
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 const routes = require('./src/routes/index');

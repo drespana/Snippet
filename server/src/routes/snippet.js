@@ -2,7 +2,7 @@ const express = require('express');
 const snippetRouter = express.Router();
 const { Snippet } = require('../models/Snippet');
 const authorize = require('../middleware/authorize');
-// const { encrypt, decrypt} = require('../utils/encrypt');
+const { encrypt, decrypt} = require('../utils/encrypt');
 
 const encryptedSnippets = require('../db/test');
 

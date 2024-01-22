@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const authorize = require("../middleware/authorize");
 
-// replace req.body with req.user after adding basicAuth
 userRouter.post("/", async (req, res, next) => {
   // get user data returned by middleware
   const { email, password } = req.body;
@@ -33,16 +32,16 @@ userRouter.post("/", async (req, res, next) => {
   }
 });
 
-userRouter.post("/login", async (req, res) => {
+userRouter.post("/login", basicAuth, async (req, res) => {
   ///////  req.user should replace req.body when basicAuth is added //////////
   // get user from database
-  const user = await User.findOne({ where: { email: req.body.email } });
+  const user = await User.findOne({ where: { email: req.user.email } });
 
   if (!user) {
     return res.status(404).send({ error: "User not found." });
   } else {
     // compare passwords
-    const result = await bcrypt.compare(req.body.password, user.password);
+    const result = await bcrypt.compare(req.user.password, user.password);
 
     if (!result) {
       return res.status(401).json({ error: "Incorrect password or email" });
