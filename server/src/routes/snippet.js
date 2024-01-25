@@ -1,16 +1,21 @@
 const express = require('express');
 const snippetRouter = express.Router();
 const { Snippet } = require('../models/Snippet');
-const authorize = require('../middleware/authorize');
 const { encrypt, decrypt } = require('../utils/encrypt');
+const { requiresAuth } = require('express-openid-connect')
 
-const encryptedSnippets = require('../db/test');
+
+//const encryptedSnippets = require('../db/test');
 
 // get all snippets
-snippetRouter.get('/', async (req, res, next)  => {
+snippetRouter.get('/', requiresAuth(), async (req, res, next)  => {
     try {
         const allSnippets = await Snippet.findAll();
-        res.json(allSnippets);
+        const decryptedSnippets = allSnippets.map(snippet => ({
+            ...snippet,
+            code: decrypt(snippet.code)
+        }))
+        res.json(decryptedSnippets);
     } catch (err) {
         next(err)
     }
@@ -23,7 +28,7 @@ snippetRouter.get('/', async (req, res, next)  => {
 
 
 // create a new snippet
-snippetRouter.post('/', async (req, res) => {
+snippetRouter.post('/', requiresAuth(), async (req, res) => {
     const { language, code } = req.body
 
     if (!language || !code) {
