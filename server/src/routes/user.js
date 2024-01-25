@@ -5,7 +5,8 @@ const { requiresAuth } = require('express-openid-connect');
 // const { User } = require("../models");
 
 userRouter.get('/', requiresAuth(), async (req, res) => {
-  res.json(req.oidc.user);
+  const userProfile = '<img src='+req.oidc.user.picture+'>'+'<h3>'+ req.oidc.user.given_name+' '+ req.oidc.user.family_name +'</h3>'
+  res.send(userProfile);
 })
 
 module.exports = userRouter;
