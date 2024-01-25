@@ -1,8 +1,5 @@
 # Branch Map
 
-## db-att
-A database attempt.
-
 ## snippr
 The actual assignment.
 
