@@ -11,11 +11,11 @@ const { requiresAuth } = require('express-openid-connect')
 snippetRouter.get('/', requiresAuth(), async (req, res, next)  => {
     try {
         const allSnippets = await Snippet.findAll();
-        const decryptedSnippets = allSnippets.map(snippet => ({
-            ...snippet,
-            code: decrypt(snippet.code)
-        }))
-        res.json(decryptedSnippets);
+        // const decryptedSnippets = allSnippets.map(snippet => ({
+        //     ...snippet,
+        //     code: decrypt(snippet.code)
+        // }))
+        res.json(allSnippets);
     } catch (err) {
         next(err)
     }
@@ -23,6 +23,7 @@ snippetRouter.get('/', requiresAuth(), async (req, res, next)  => {
 
 // get by ID
 
+// get by user
 
 // get by language
 

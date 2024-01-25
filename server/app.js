@@ -35,6 +35,12 @@ app.get("/", (req, res) => {
 app.use("/snippets", routes.snippets);
 app.use("/users", routes.users);
 
+app.use((error, req, res, next) => {
+  console.error('SERVER ERROR: ', error);
+  if(res.statusCode < 400) res.status(500);
+  res.send({error: error.message, name: error.name, message: error.message});
+});
+
 async function init() {
   db.sync().then(await syncSeed());
 
