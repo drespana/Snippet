@@ -16,6 +16,10 @@ app.get("/", (req, res) => {
 app.use('/snippets', routes.snippets)
 // app.use('/users', routes.users)
 
+async function init() {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+}
+
+init();

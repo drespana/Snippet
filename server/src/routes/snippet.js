@@ -24,23 +24,23 @@ router.get('/', authorize, (req, res, next) => {
 //////////////////////////////////////////////////////
 ///// ROUTES THAT REQUIRE ENCRYPT & DECRYPT //////////
 
-// // get all snippets
-// router.get("/", (req, res, next) => {
-//   try {
-//     const decryptedSnippets = snippets.map((snippet) => ({
-//       ...snippet,
-//       code: decrypt(snippet.code),
-//     }));
-//     res.json(decryptedSnippets);
-//     // res.json(snippets);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+// get all snippets
+router.get("/", (req, res, next) => {
+  try {
+    const decryptedSnippets = snippets.map((snippet) => ({
+      ...snippet,
+      code: decrypt(snippet.code),
+    }));
+    res.json(decryptedSnippets);
+    // res.json(snippets);
+  } catch (err) {
+    next(err);
+  }
+});
 
-// // get by ID
+// get by ID
 
-// // get by language
+// get by language
 // router.get("/", (req, res, next) => {
 //     try {
 //       const { language } = req.query
@@ -60,27 +60,27 @@ router.get('/', authorize, (req, res, next) => {
 //     }
 //   });
 
-// // create a new snippet
-// router.post("/", (req, res, next) => {
-//   try {
-//     const { language, code } = req.body;
-//     if (!language || !code) {
-//       return res
-//         .status(400)
-//         .json({ error: "language and code are required fields" });
-//     }
+// create a new snippet
+router.post("/", (req, res, next) => {
+  try {
+    const { language, code } = req.body;
+    if (!language || !code) {
+      return res
+        .status(400)
+        .json({ error: "language and code are required fields" });
+    }
 
-//     const snippet = {
-//       id: ++id,
-//       language,
-//       code,
-//     };
+    const snippet = {
+      id: ++id,
+      language,
+      code,
+    };
 
-//     snippets.push({ ...snippet, code: encrypt(code) });
-//     res.status(201).json(snippet);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+    snippets.push({ ...snippet, code: encrypt(code) });
+    res.status(201).json(snippet);
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
