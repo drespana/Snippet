@@ -1,6 +1,6 @@
 const routes = {
-    snippet: require('./snippet'),
-    user: require('./user')
+    snippets: require('./snippet'),
+    users: require('./user')
 }
 
 module.exports = routes

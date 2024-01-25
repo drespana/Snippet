@@ -1,6 +1,6 @@
 # for later
-
-
+.sqlite
+/server/src/db/db.sqlite
 
 
 # Logs
